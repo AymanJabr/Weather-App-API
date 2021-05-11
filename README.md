@@ -8,15 +8,17 @@ In this project I created a very simple weather app, thats let you input the nam
 
 ## Getting Started
 
-To get a local copy up and running follow these simple example steps.
+To get a local copy up and running follow these steps.
 
+1. Clone or copy repository, and navigate to the the `development` branch
 
-## Usage
-1. Get an API key from https://openweathermap.org/
+2. Get an API key from https://openweathermap.org/
 
-2. Insert it at line 1, in the `index.js` where it tells you to do so
+3. Insert it at line 1, in the `index.js` where it tells you to do so
 
-2. Double click on `index.html` to open project in new browser window
+4. run `npm install` to install node packages
+
+5. Double click on `index.html` to open project in new browser window
 
 
 ## AUTHOR
