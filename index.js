@@ -13,7 +13,7 @@ let pressure = '';
 let humidity = '';
 let description = '';
 
-let inCelcius = true
+let inCelcius = true;
 
 const documentLocation = document.getElementById('location');
 const documentLongitude = document.getElementById('longitude');
@@ -26,8 +26,7 @@ const documentDescription = document.getElementById('description');
 fetch(`http://api.openweathermap.org/data/2.5/weather?q=${myLocation}&appid=${WEATHER_API_KEY}`, {
   mode: 'cors',
 }).then((response) => response.json()).then((data) => {
-
-  console.log(data)
+  console.log(data);
 
   currentLocation = data.name;
   coordinates = [data.coord.lon, data.coord.lat];
@@ -43,19 +42,18 @@ fetch(`http://api.openweathermap.org/data/2.5/weather?q=${myLocation}&appid=${WE
   documentPressure.innerHTML += pressure;
   documentHumidity.innerHTML += humidity;
   documentDescription.innerHTML += description;
-}).catch(e => console.error(e));
+}).catch((e) => console.error(e));
 
-
-const documentChangeTemperature = document.getElementById('change-temperature')
+const documentChangeTemperature = document.getElementById('change-temperature');
 
 documentChangeTemperature.addEventListener('click', () => {
-  if(inCelcius){
-    inCelcius = false
-    documentChangeTemperature.innerHTML = 'Change Temperature to Celsius'
-    documentTemperature.innerHTML = `Average Temperature (F): ${Math.round(((avgTemp*9)/5) + 32)}`
+  if (inCelcius) {
+    inCelcius = false;
+    documentChangeTemperature.innerHTML = 'Change Temperature to Celsius';
+    documentTemperature.innerHTML = `Average Temperature (F): ${Math.round(((avgTemp * 9) / 5) + 32)}`;
   } else {
-    inCelcius = true
-    documentChangeTemperature.innerHTML = 'Change Temperature to Fahrenheit'
-    documentTemperature.innerHTML = `Average Temperature (C): ${avgTemp}`
+    inCelcius = true;
+    documentChangeTemperature.innerHTML = 'Change Temperature to Fahrenheit';
+    documentTemperature.innerHTML = `Average Temperature (C): ${avgTemp}`;
   }
-})
+});
