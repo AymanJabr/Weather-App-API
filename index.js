@@ -20,7 +20,7 @@ const documentPressure = document.getElementById('pressure');
 const documentHumidity = document.getElementById('humidity');
 const documentDescription = document.getElementById('description');
 
-const weatherData = fetch(`http://api.openweathermap.org/data/2.5/weather?q=${myLocation}&appid=${WEATHER_API_KEY}`, {
+fetch(`http://api.openweathermap.org/data/2.5/weather?q=${myLocation}&appid=${WEATHER_API_KEY}`, {
   mode: 'cors',
 }).then((response) => response.json()).then((data) => {
   currentLocation = data.name;
