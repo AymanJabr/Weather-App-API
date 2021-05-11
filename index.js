@@ -12,6 +12,7 @@ let avgTemp = '';
 let pressure = '';
 let humidity = '';
 let description = '';
+let icon = '';
 
 let inCelcius = true;
 
@@ -22,18 +23,18 @@ const documentTemperature = document.getElementById('temperature');
 const documentPressure = document.getElementById('pressure');
 const documentHumidity = document.getElementById('humidity');
 const documentDescription = document.getElementById('description');
+const documentIcon = document.getElementById('weatherIcon');
 
 fetch(`http://api.openweathermap.org/data/2.5/weather?q=${myLocation}&appid=${WEATHER_API_KEY}`, {
   mode: 'cors',
 }).then((response) => response.json()).then((data) => {
-  console.log(data);
-
   currentLocation = data.name;
   coordinates = [data.coord.lon, data.coord.lat];
   avgTemp = Math.round(Number(data.main.temp) - 273);
   pressure = data.main.pressure;
   humidity = data.main.humidity;
   description = data.weather[0].description;
+  icon = data.weather[0].icon;
 
   documentLocation.innerHTML += currentLocation;
   documentLatitude.innerHTML += coordinates[1];
@@ -42,6 +43,7 @@ fetch(`http://api.openweathermap.org/data/2.5/weather?q=${myLocation}&appid=${WE
   documentPressure.innerHTML += pressure;
   documentHumidity.innerHTML += humidity;
   documentDescription.innerHTML += description;
+  documentIcon.src = `http://openweathermap.org/img/w/${icon}.png`;
 }).catch((e) => console.error(e));
 
 const documentChangeTemperature = document.getElementById('change-temperature');
