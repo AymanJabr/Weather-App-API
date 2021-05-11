@@ -1,4 +1,5 @@
-const WEATHER_API_KEY = '2ae79583e0f2d3eb58119b55bbb02972'
+const WEATHER_API_KEY = 'Insert_API_Key_Here'
+// You can get an api key by subscribing to this website: https://openweathermap.org/
 
 let myLocation = window.prompt("Enter the location where you wish to get Weather information for")
 myLocation = myLocation.trim()
@@ -22,7 +23,7 @@ let document_description = document.getElementById('description')
 
 weatherData = fetch(`http://api.openweathermap.org/data/2.5/weather?q=${myLocation}&appid=${WEATHER_API_KEY}`, {
     mode: 'cors'
-}).then(resonse => resonse.json()).then(data => {
+}).then(response => response.json()).then(data => {
     console.log(data)
     
     currentLocation = data.name
