@@ -5,10 +5,21 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./styles.css">
-    <script src="./index.js" defer></script>
+    <script src="./dist/main.js" defer></script>
+    <!-- <script src="./index.js" defer></script> -->
     <title>Weather App</title>
 </head>
 <body>
+
+    <form>
+        <label for="locationSearch">Enter name of city that you want to search: </label>
+        <input type="text" id="locationSearch" name="locationSearch">
+    </form>
+
+    <button id="searchLocationButton">Search</button>
+
+
+
     <h1 id="location">Current Location: </h1>
     <br>
     <img id="weatherIcon" src="" alt="Weather icon">
