@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./styles.css">
+    <script src="./main.js" defer></script>
+    <!-- <script src="../index.js" defer></script> -->
+    <title>Weather App</title>
+</head>
+<body>
+
+    <form>
+        <label for="locationSearch">Enter name of city that you want to search: </label>
+        <input type="text" id="locationSearch" name="locationSearch">
+    </form>
+
+    <button id="searchLocationButton">Search</button>
+
+    <h2 class="red" id="error-message"></h2>
+
+
+
+    <h1 id="location">Current Location: </h1>
+    <br>
+    <img id="weatherIcon" src="" alt="Weather icon">
+    <br>
+    <div id="coordinates">
+        <h4 id="longitude">Longitude: </h4>
+        <h4 id="latitude">Latitude: </h4>
+    </div>
+    <h4 id="temperature">Average Temperature (C): </h4>
+    <h4 id="pressure">Pressure (mbar): </h4>
+    <h4 id="humidity">Humidity (percentage): </h4>
+    <h4 id="description">Cloud Conditions: </h4>
+    <br><br>
+    <button id="change-temperature">Change Temperature to Fahrenheit</button>
+    
+</body>
+</html>

@@ -1,0 +1,13 @@
+body {
+  color: white;
+  background: black;
+}
+
+button {
+  background: white;
+  color: black;
+}
+
+.red {
+  color: red;
+}
