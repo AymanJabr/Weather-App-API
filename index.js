@@ -1,4 +1,5 @@
-const WEATHER_API_KEY = 'Insert_API_KeyHere';
+// const WEATHER_API_KEY = 'Insert_API_KeyHere';
+const WEATHER_API_KEY = '2ae79583e0f2d3eb58119b55bbb02972';
 // You can get an api key by subscribing to this website: https://openweathermap.org/
 
 let currentLocation = '';
@@ -23,8 +24,10 @@ const documentIcon = document.getElementById('weatherIcon');
 const documentLocationInput = document.getElementById('locationSearch');
 const documentLocationButton = document.getElementById('searchLocationButton');
 const documentChangeTemperature = document.getElementById('change-temperature');
+const documentError = document.getElementById('error-message');
 
 const clearDocument = () => {
+  documentError.innerHTML = '';
   documentLocation.innerHTML = 'Current Location: ';
   documentLatitude.innerHTML = 'Latitude: ';
   documentLongitude.innerHTML = 'Longitude: ';
@@ -60,7 +63,9 @@ documentLocationButton.addEventListener('click', () => {
     documentHumidity.innerHTML += humidity;
     documentDescription.innerHTML += description;
     documentIcon.src = `http://openweathermap.org/img/w/${icon}.png`;
-  }).catch((e) => console.error(e));
+  }).catch(() => {
+    documentError.innerHTML = 'Please Enter a valid City Name';
+  });
 });
 
 documentChangeTemperature.addEventListener('click', () => {
