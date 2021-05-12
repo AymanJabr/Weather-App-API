@@ -11,31 +11,31 @@ let description = '';
 let icon = '';
 let myLocation = '';
 
-let inCelcius = true;
+// let inCelsius = true;
 
-const documentLocation = document.getElementById('location');
-const documentLongitude = document.getElementById('longitude');
-const documentLatitude = document.getElementById('latitude');
-const documentTemperature = document.getElementById('temperature');
-const documentPressure = document.getElementById('pressure');
-const documentHumidity = document.getElementById('humidity');
-const documentDescription = document.getElementById('description');
-const documentIcon = document.getElementById('weatherIcon');
-const documentLocationInput = document.getElementById('locationSearch');
-const documentLocationButton = document.getElementById('searchLocationButton');
-const documentChangeTemperature = document.getElementById('change-temperature');
-const documentError = document.getElementById('error-message');
+// const documentLocation = document.getElementById('location');
+// const documentLongitude = document.getElementById('longitude');
+// const documentLatitude = document.getElementById('latitude');
+// const documentTemperature = document.getElementById('temperature');
+// const documentPressure = document.getElementById('pressure');
+// const documentHumidity = document.getElementById('humidity');
+// const documentDescription = document.getElementById('description');
+// const documentIcon = document.getElementById('weatherIcon');
+// const documentLocationInput = document.getElementById('locationSearch');
+// const documentLocationButton = document.getElementById('searchLocationButton');
+// const documentChangeTemperature = document.getElementById('change-temperature');
+// const documentError = document.getElementById('error-message');
 
-const clearDocument = () => {
-  documentError.innerHTML = '';
-  documentLocation.innerHTML = 'Current Location: ';
-  documentLatitude.innerHTML = 'Latitude: ';
-  documentLongitude.innerHTML = 'Longitude: ';
-  documentTemperature.innerHTML = 'Average Temperature (C): ';
-  documentPressure.innerHTML = 'Pressure (mbar): ';
-  documentHumidity.innerHTML = 'Humidity (percentage): ';
-  documentDescription.innerHTML = 'Cloud Conditions: ';
-};
+// const clearDocument = () => {
+//   documentError.innerHTML = '';
+//   documentLocation.innerHTML = 'Current Location: ';
+//   documentLatitude.innerHTML = 'Latitude: ';
+//   documentLongitude.innerHTML = 'Longitude: ';
+//   documentTemperature.innerHTML = 'Average Temperature (C): ';
+//   documentPressure.innerHTML = 'Pressure (mbar): ';
+//   documentHumidity.innerHTML = 'Humidity (percentage): ';
+//   documentDescription.innerHTML = 'Cloud Conditions: ';
+// };
 
 documentLocationButton.addEventListener('click', () => {
   myLocation = documentLocationInput.value;
@@ -55,27 +55,31 @@ documentLocationButton.addEventListener('click', () => {
 
     clearDocument();
 
-    documentLocation.innerHTML += currentLocation;
-    documentLatitude.innerHTML += coordinates[1];
-    documentLongitude.innerHTML += coordinates[0];
-    documentTemperature.innerHTML += avgTemp;
-    documentPressure.innerHTML += pressure;
-    documentHumidity.innerHTML += humidity;
-    documentDescription.innerHTML += description;
-    documentIcon.src = `http://openweathermap.org/img/w/${icon}.png`;
+    updateDocument(currentLocation, coordinates[0], coordinates[1], avgTemp, pressure, humidity, description, icon)
+
+    // documentLocation.innerHTML += currentLocation;
+    // documentLatitude.innerHTML += coordinates[1];
+    // documentLongitude.innerHTML += coordinates[0];
+    // documentTemperature.innerHTML += avgTemp;
+    // documentPressure.innerHTML += pressure;
+    // documentHumidity.innerHTML += humidity;
+    // documentDescription.innerHTML += description;
+    // documentIcon.src = `http://openweathermap.org/img/w/${icon}.png`;
   }).catch(() => {
     documentError.innerHTML = 'Please Enter a valid City Name';
   });
 });
 
 documentChangeTemperature.addEventListener('click', () => {
-  if (inCelcius) {
-    inCelcius = false;
-    documentChangeTemperature.innerHTML = 'Change Temperature to Celsius';
-    documentTemperature.innerHTML = `Average Temperature (F): ${Math.round(((avgTemp * 9) / 5) + 32)}`;
+  if (inCelsius) {
+    inCelsius = false;
+    convertToFahrenheit()
+    // documentChangeTemperature.innerHTML = 'Change Temperature to Celsius';
+    // documentTemperature.innerHTML = `Average Temperature (F): ${Math.round(((avgTemp * 9) / 5) + 32)}`;
   } else {
-    inCelcius = true;
-    documentChangeTemperature.innerHTML = 'Change Temperature to Fahrenheit';
-    documentTemperature.innerHTML = `Average Temperature (C): ${avgTemp}`;
+    inCelsius = true;
+    convertToCelsius()
+    // documentChangeTemperature.innerHTML = 'Change Temperature to Fahrenheit';
+    // documentTemperature.innerHTML = `Average Temperature (C): ${avgTemp}`;
   }
 });
