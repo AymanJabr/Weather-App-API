@@ -1,6 +1,12 @@
-// const WEATHER_API_KEY = 'Insert_API_KeyHere';
-const WEATHER_API_KEY = '2ae79583e0f2d3eb58119b55bbb02972';
 // You can get an api key by subscribing to this website: https://openweathermap.org/
+
+/* eslint-disable max-len */
+
+import {
+  convertToCelsius, convertToFahrenheit, clearDocument, updateDocument, giveErrorMessage, documentLocationInput, documentLocationButton, documentChangeTemperature,
+} from './doc-man';
+
+const WEATHER_API_KEY = 'Insert_API_KeyHere';
 
 let currentLocation = '';
 let coordinates = [];
@@ -11,31 +17,7 @@ let description = '';
 let icon = '';
 let myLocation = '';
 
-// let inCelsius = true;
-
-// const documentLocation = document.getElementById('location');
-// const documentLongitude = document.getElementById('longitude');
-// const documentLatitude = document.getElementById('latitude');
-// const documentTemperature = document.getElementById('temperature');
-// const documentPressure = document.getElementById('pressure');
-// const documentHumidity = document.getElementById('humidity');
-// const documentDescription = document.getElementById('description');
-// const documentIcon = document.getElementById('weatherIcon');
-// const documentLocationInput = document.getElementById('locationSearch');
-// const documentLocationButton = document.getElementById('searchLocationButton');
-// const documentChangeTemperature = document.getElementById('change-temperature');
-// const documentError = document.getElementById('error-message');
-
-// const clearDocument = () => {
-//   documentError.innerHTML = '';
-//   documentLocation.innerHTML = 'Current Location: ';
-//   documentLatitude.innerHTML = 'Latitude: ';
-//   documentLongitude.innerHTML = 'Longitude: ';
-//   documentTemperature.innerHTML = 'Average Temperature (C): ';
-//   documentPressure.innerHTML = 'Pressure (mbar): ';
-//   documentHumidity.innerHTML = 'Humidity (percentage): ';
-//   documentDescription.innerHTML = 'Cloud Conditions: ';
-// };
+let inCelsius = true;
 
 documentLocationButton.addEventListener('click', () => {
   myLocation = documentLocationInput.value;
@@ -55,31 +37,18 @@ documentLocationButton.addEventListener('click', () => {
 
     clearDocument();
 
-    updateDocument(currentLocation, coordinates[0], coordinates[1], avgTemp, pressure, humidity, description, icon)
-
-    // documentLocation.innerHTML += currentLocation;
-    // documentLatitude.innerHTML += coordinates[1];
-    // documentLongitude.innerHTML += coordinates[0];
-    // documentTemperature.innerHTML += avgTemp;
-    // documentPressure.innerHTML += pressure;
-    // documentHumidity.innerHTML += humidity;
-    // documentDescription.innerHTML += description;
-    // documentIcon.src = `http://openweathermap.org/img/w/${icon}.png`;
+    updateDocument(currentLocation, coordinates[0], coordinates[1], avgTemp, pressure, humidity, description, icon);
   }).catch(() => {
-    documentError.innerHTML = 'Please Enter a valid City Name';
+    giveErrorMessage();
   });
 });
 
 documentChangeTemperature.addEventListener('click', () => {
   if (inCelsius) {
     inCelsius = false;
-    convertToFahrenheit()
-    // documentChangeTemperature.innerHTML = 'Change Temperature to Celsius';
-    // documentTemperature.innerHTML = `Average Temperature (F): ${Math.round(((avgTemp * 9) / 5) + 32)}`;
+    convertToFahrenheit(avgTemp);
   } else {
     inCelsius = true;
-    convertToCelsius()
-    // documentChangeTemperature.innerHTML = 'Change Temperature to Fahrenheit';
-    // documentTemperature.innerHTML = `Average Temperature (C): ${avgTemp}`;
+    convertToCelsius(avgTemp);
   }
 });
